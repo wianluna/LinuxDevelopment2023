@@ -1,0 +1,56 @@
+*** maze_v3.c	2023-11-25 03:39:06.105568300 +0300
+--- maze_v4.c	2023-11-25 03:42:21.330041000 +0300
+***************
+*** 90,104 ****
+  }
+  
+  
+! int main(int argc, char **argv) {
+!     srand(time(0));
+!     
+!     if (argc != 3) {
+!         printf("Usage: ./maze <'door''wall'> maze_size\n");
+          return 1;
+      }
+  
+!     int maze_size = atoi(argv[2]) * 2 + 1;
+      int **maze  = malloc(maze_size * sizeof(int*));
+  
+      for (int i = 0; i < maze_size; ++i) {
+--- 90,104 ----
+  }
+  
+  
+! int main(int argc, char **argv) {    
+!     if (argc != 4) {
+!         printf("Usage: ./maze random_seed <'door''wall'> maze_size\n");
+          return 1;
+      }
+  
+!     srand(atoi(argv[1]));
+! 
+!     int maze_size = atoi(argv[3]) * 2 + 1;
+      int **maze  = malloc(maze_size * sizeof(int*));
+  
+      for (int i = 0; i < maze_size; ++i) {
+***************
+*** 159,167 ****
+      for (int i = 0; i < maze_size; ++i) {
+          for (int j = 0; j < maze_size; ++j) {
+              if (maze[i][j] == WALL) {
+!                 printf("%c", argv[1][1]);
+              } else {
+!                 printf("%c", argv[1][0]);
+              }
+          }
+          printf("\n");
+--- 159,167 ----
+      for (int i = 0; i < maze_size; ++i) {
+          for (int j = 0; j < maze_size; ++j) {
+              if (maze[i][j] == WALL) {
+!                 printf("%c", argv[2][1]);
+              } else {
+!                 printf("%c", argv[2][0]);
+              }
+          }
+          printf("\n");
